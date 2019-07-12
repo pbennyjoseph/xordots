@@ -66,9 +66,6 @@ void Display(int n,int *c,int *f,int player)
 			printf("\u2022");
 			#endif
 			printf("\x1b[0m");
-			//k?printf("\u2022-"):printf("\u2022");
-			//k = (j==i+1?0:f[i*(i+1)/2+j]);
-			//printf("\x1b[0m");
 			k?printf("-"):printf(" ");
 		}
 		printf("\n");
@@ -97,7 +94,7 @@ consider the following state
 	  • • •			0 0
 	 • • • •		0 0 0		--->	gmstate = [0 0 0 0 0 0 0 1 0 0 0 0 0 1 1]
 	• •-• • •		0 1 0 0
-   • • • •-•-•		0 0 0 1 1	--->    e = [1 2 3 1 2 3]
+       • • • •-•-•		0 0 0 1 1	--->    e = [1 2 3 1 2 3]
    where is the array storing lengths of segments and XOR(e)==0 (i.e. The player who plays this position first loses)
    consider a state where XOR(e)!=0
    then we can always make it zero by decreasing {a single} of the element by {some} amount
@@ -145,17 +142,6 @@ void FindWinning(int *f,int *w,int n)
 		}
 		j++;
 	}
-
-	for(i=0;i<j;i++) loop[i]=e[i];
-
-	// for(i=0;i<SumNaturalN(n);printf("%d ",f[i++]));
-	// printf("\n");
-	// for(i=0;i<j;printf("%d ",e[i++]));
-	// printf("\n");
-	// for(i=0;i<j;printf("%d ",loop[i++]));
-	// printf("\n");
-	// for(i=0;i<j;printf("%d ",skip[i++]));
-	// printf("\n");
 
 	for(i=0;i<j;i++) loop[i]=e[i];
 	for(i=0;i<j;xor ^= e[i++]);
@@ -236,7 +222,7 @@ gmstate - an array filled with 0's and 1's to represent the pattern in one dimen
 	  • • •			0 0
 	 • • • •		0 0 0		--->	gmstate = [0 0 0 0 0 0 0 1 0 0 0 0 0 1 1]
 	• •-• • •		0 1 0 0
-   • • • •-•-•		0 0 0 1 1
+       • • • •-•-•		0 0 0 1 1
 */
 void startgame(int n,int *win,int play)
 {
