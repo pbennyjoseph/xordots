@@ -28,4 +28,4 @@
 
  The Input
 
- • The input is given in the format <row no><space><start dot><space><end dot>
+ • The input is given in the format \<row number\>\<space\>\<start dot\>\<space\>\<end dot\>
