@@ -1,4 +1,4 @@
-# XORDOTS 1.0
+# xordots
 
 # The Game
 
