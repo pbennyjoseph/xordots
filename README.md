@@ -1,6 +1,6 @@
 # xordots
 
-# The Game
+### The Game
 
  • Players join the dots (of any length) in horizontal manner.
 
@@ -8,7 +8,7 @@
 
  • Two players take turns to play the game.
 
-# The Rules of the game
+### The Rules of the game
 
  • The player (with the turn) selects a single row.
 
@@ -20,12 +20,8 @@
 
  • The player cannot join the dots which are already joined or makes an overlap.
 
-# The Computer and Input
+### The Computer and Input
 
  • In the game following, the computer plays the game with human opponent.
 
  • The player gets to choose the game height, and the starting player.
-
- The Input
-
- • The input is given in the format \<row number\>\<space\>\<start dot\>\<space\>\<end dot\>

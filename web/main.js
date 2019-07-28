@@ -358,5 +358,9 @@ $('#exampleModalCenter').modal({
 	show: false
 });
 
+$('#gameinfomodal').modal({
+	show: false
+});
+
 $('#rowsinit').click();
 $('#playerinit').click();
