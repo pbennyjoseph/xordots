@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="throbber" version="1" width="110" height="110" viewBox="0 0 40 40">
+<style>@keyframes spin{100%{-webkit-transform: rotate(360deg); transform:rotate(360deg);}}@-moz-keyframes spin{100%{-moz-transform: rotate(360deg);}}@-webkit-keyframes spin{100%{-webkit-transform: rotate(360deg);}}@keyframes throbberDash{0%,10%{stroke-dasharray:1,270;stroke-dashoffset:0}40%{stroke-dasharray:89,240;stroke-dashoffset:0}100%{stroke-dasharray:1,240;stroke-dashoffset:-110}}@keyframes throbberColor{0%,20%,100%{stroke:#42a5f5}30%,45%{stroke:#f44336}50%,70%{stroke:#fdd835}75%,95%{stroke:#4caf50}}.throbber{margin:auto;}.g{-webkit-animation:spin 1.5s linear infinite;-moz-animation:spin 1.5s linear infinite;-webkit-transform-origin: 50% 50%;animation:spin 1.5s linear infinite;}/*Rotating the whole thing*/.throbber circle{stroke:#42a5f5;stroke-width:4;animation:throbberDash 1.275s ease-in-out infinite,throbberColor 5.1s linear infinite;}/*For Monochrome throbber*/.throbber.monochrome circle{animation:throbberDash 1.275s ease-in-out infinite;stroke:#ddd;}/*For Monochrome throbber*/</style>
+<g class="g"><circle cx="20" cy="20" r="18" stroke-linecap="round" fill="none">
+</circle>
+</g>
+</svg>
