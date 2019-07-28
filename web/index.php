@@ -14,10 +14,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
-html,
-body {
-  height: 100%;
-}
+  html,
+  body {
+    height: 100%;
+  }
 
   body {
     display: -ms-flexbox;
@@ -158,32 +158,32 @@ body {
                   <button type="button" class="rowconfig btn btn-danger">11</button>
                 </div>
               </div>
-              <!-- <select name="rr-w" class="mb-2 form-control" onchange="rrw(this.value);" required>
-                <option value="" disabled>None</option>
-                <option value="4" selected>4</option>
-                <?php
-                  for($i=5;$i<12;$i++){
-                    echo '<option value="'.$i.'">'.$i.'</option>';
-                  }
-                ?>
-              </select>
-              <input id="startplayer" type="hidden"></input>
-              <label class="d-inline-block" for="sr-w"><strong>Player: </strong></label>
-              <select name="sr-w" class="mb-2 form-control" onchange="srw(this.value)" required>
-                <option value="" disabled>None</option>
-                <option value="1" href="#" selected>Human</option>
-                <option value="0" href="#">Computer</option>
-              </select> -->
               <input id="startplayer" type="hidden"></input>
               <div class="btn-toolbar mx-auto mb-2 " role="toolbar">
                 <div class="btn-group" role="group">
                   <div class="input-group-prepend">
                     <div class="input-group-text" id="namedisplay">Start Player</div>
                   </div>
-                  <button id="playerinit" type="button" class="playerconfig btn btn-secondary ">You</button>
+                  <button id="playerinit" type="button" class="playerconfig btn btn-secondary">You</button>
                   <button type="button" class="playerconfig btn btn-secondary">Bot</button>
                 </div>
               </div>
+
+              <div class="btn-toolbar mx-auto my-2 " role="toolbar">
+                <div class="btn-group" role="group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text" id="theme">Default Theme</div>
+                  </div>
+                    <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="theme dropdown-item text-primary" href="#" >Default</a>
+                      <a class="theme dropdown-item text-warning" href="#" >Yellow</a>
+                    </div>
+                </div>
+              </div>
+
               <button id="gamestarter" class="btn btn-outline-primary">Start Game</button>
             </div>
           </center>
@@ -191,17 +191,8 @@ body {
       </div>
 
     </div>
-    <!-- </div> -->
   </div>
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-  </script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-  </script> -->
+  <script src="game.js"></script>
   <script src="main.js"></script>
 </body>
 
