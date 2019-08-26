@@ -1,6 +1,10 @@
 var gmstate;
 var Winning = new Array();
 var player;
+var P1 = "You",
+	P2 = "Bot",
+	botplay = 1; // 1 for bot 0 for twoplayer
+var names_data = [];
 
 function InitiateGame(N, X) {
 	GameSize = N;
@@ -8,9 +12,11 @@ function InitiateGame(N, X) {
 	CreatePattern(GameSize);
 	player = X;
 	// alert(player);
-	if (!X) {
+	if (!X && botplay) {
 		bot_play();
 	}
+
+	$('#currplayer').html("To Play: " + (player ? P1 : P2));
 
 	$('.dot').click(async function () {
 		dotvalue = $(this).attr("value").split("-");
@@ -47,18 +53,23 @@ function InitiateGame(N, X) {
 			j = SumNaturalN((+Selected[0]) - 1);
 			for (i = j + (+Selected[1]) - 1; i < j + (+Selected[2]) - 1; i++, gmstate[i - 1] = 1);
 			player ^= 1;
+			$('#currplayer').html("To Play: " + (player ? P1 : P2));
 			Selected = undefined;
 			Display();
 			if (EndOfGame(SumNaturalN(GameSize))) {
-				TrueEndOfGame();
+				Display();
+				setTimeout(TrueEndOfGame, 800);
 				return;
 			}
 			// RemoveGrey(rowno);
-			await sleep(1000);
-			bot_play();
+			if (botplay) {
+				await sleep(800);
+				bot_play();
+			}
 			// 
 			if (EndOfGame(SumNaturalN(GameSize))) {
-				TrueEndOfGame();
+				Display();
+				setTimeout(TrueEndOfGame, 800);
 				return;
 			}
 		} else {
@@ -84,6 +95,22 @@ function InitiateGame(N, X) {
 	});
 }
 
+function getTwoNames() {
+	var request = new XMLHttpRequest()
+	https: //api.noopschallenge.com/wordbot?count=2&set=adjectives
+		request.open('GET', 'https://api.noopschallenge.com/wordbot?count=2&set=animals', true)
+	request.onload = function () {
+		// Begin accessing JSON data here
+		var data = JSON.parse(this.response)
+
+		if (request.status >= 200 && request.status < 400) {
+			names_data = data;
+		} else {
+			console.log('error');
+		}
+	}
+	request.send();
+}
 
 rrw = (x, y) => {
 	$('#rownumbers').html(x);
@@ -94,7 +121,7 @@ rrw = (x, y) => {
 
 srw = (x, y) => {
 	$('#startplayer').html(+x);
-	$('#namedisplay').html((+x ? 'You ' : 'Bot ') + 'will Start');
+	$('#namedisplay').html((+x ? P1 : P2) + ' will Start');
 	$(y).addClass('active');
 	$('.playerconfig').not(y).removeClass('active');
 }
@@ -104,14 +131,80 @@ $('.rowconfig').click(function () {
 });
 
 $('.playerconfig').click(function () {
-	srw($(this).text() == 'You', this);
+	srw($(this).text() == P1, this);
 });
+
+$('#doubleplayer').click(function () {
+	$(this).addClass('active');
+	$('#defplayer').removeClass('active');
+	if (P1 == 'You') {
+		P1 = names_data['words'][0];
+		P2 = names_data['words'][1];
+		$('#exname1').attr('value', P1);
+		$('#exname2').attr('value', P2);
+		$('#playerinit').html(P1);
+		$('#botplayer').html(P2);
+		getTwoNames();
+	}
+	$('#playerinit').click();
+	$('#playernames').show();
+	botplay = 0;
+});
+
+$('#exname1').change(function () {
+	P1 = $(this).val().trim();
+	if (!P1) {
+		P1 = names_data['words'][0];
+		$(this).val(P1);
+	}
+	$('#playerinit').html(P1);
+});
+
+$('#exname2').change(function () {
+	P2 = $(this).val().trim();
+	if (!P2) {
+		P2 = names_data['words'][1];
+		$(this).val(P2);
+	}
+	$('#botplayer').html(P2);
+	$('#botplayer').click();
+});
+
+$('#defplayer').click(function () {
+	$('#playernames').hide();
+	$(this).addClass('active');
+	$('#doubleplayer').removeClass('active');
+	P1 = "You";
+	P2 = "Bot";
+	botplay = 1;
+	$('#botplayer').html(P2);
+	$('#playerinit').html(P1);
+	$('#playerinit').click();
+});
+
+$('#resetgame').click(function () {
+	$('#pattern').html("");
+	$('#pattern').hide("");
+	$('#gamethings').hide("");
+	InitiateGame(+$('#rownumbers').text(), +$('#startplayer').text());
+	$('#pattern').show();
+	$('#gamethings').show();
+});
+
+$('#back').click(function () {
+	$('#init').show();
+	$('#pattern').html("");
+	$('#pattern').hide("");
+	$('#gamethings').hide("");
+});
+
 
 $('#gamestarter').click(function () {
 	$('#init').hide();
 	InitiateGame(+$('#rownumbers').text(), +$('#startplayer').text())
 	$('#loader').show();
 	setTimeout(() => {
+		$('#gamethings').show();
 		$('#pattern').show();
 		$('#loader').hide();
 	}, 1000);
@@ -122,17 +215,20 @@ $('#gamestarter').click(function () {
 $('.theme').click(function () {
 	color = COLOR[$(this).text().toLowerCase()];
 	fillcolor = FILLCOLOR[$(this).text().toLowerCase()];
-	$('#theme').html($(this).text()+' theme');
+	$('#theme').html($(this).text() + ' theme');
 });
 
 
-$('#exampleModalCenter').modal({
+$('#exampleModalCenter,#gameinfomodal').modal({
 	show: false
 });
 
-$('#gameinfomodal').modal({
-	show: false
-});
+// $('#gameinfomodal').modal({
+// 	show: false
+// });
 
-$('#rowsinit').click();
-$('#playerinit').click();
+$('#rowsinit, #playerinit, #defplayer').click();
+$('[data-toggle="tooltip"]').tooltip();
+// $('#playerinit').click();
+$('script').remove();
+getTwoNames();

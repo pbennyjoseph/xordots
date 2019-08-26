@@ -1,4 +1,5 @@
 var GameSize, Selected = undefined;
+var defplayer = 1;
 var DISPLAY,
     COLOR = {
         "default": '007bff',
@@ -8,8 +9,8 @@ var DISPLAY,
         "default": '004085',
         "yellow": '343a40'
     },
-    color = COLOR.default;
-fillcolor = FILLCOLOR.default;
+    color = COLOR.default,
+    fillcolor = FILLCOLOR.default;
 
 
 function sleep(ms) {
@@ -197,14 +198,15 @@ function bot_play() {
     // console.log(Winning);
     PlayMove(Winning, SumNaturalN(GameSize));
     player ^= 1;
+    $('#currplayer').html("To Play: " + (player ? P1 : P2));
     Selected = undefined;
     Display();
 }
 
 function TrueEndOfGame() {
     gmstate = new Array(SumNaturalN(GameSize)).fill(0);
-    Display();
-    $('#modal-text-dd').html('<center>' + (!player ? 'You Win' : 'Bot Wins') +
+    // Display();
+    $('#modal-text-dd').html('<center>' + (!player ? (P1 + ((P1 == "You") ? ' Win' : ' Wins')) : P2 + ' Wins') +
         '<br><div id="imgthing"><img src="load.svg" class="my-2 img-fluid"></img></div></center>');
     $('#exampleModalCenter').modal('show');
     var xhr = new XMLHttpRequest();
@@ -225,10 +227,11 @@ function TrueEndOfGame() {
             $('#imgthing').html(video);
         }
     }
-    xhr.open('GET', './webms/' + (!player ? 'hwin' : 'botwin') + '/' + Math.floor((Math.random() * 8) + 1) + '-min.webm');
+    xhr.open('GET', './webms/' + (P1 == 'You' ? (!player ? 'hwin' : 'botwin') : 'wins') + '/' + Math.floor((Math.random() * 8) + 1) + '-min.webm');
     xhr.responseType = 'blob';
     xhr.send();
     $('#init').show();
     $('#pattern').html("");
     $('#pattern').hide("");
+    $('#gamethings').hide("");
 }
