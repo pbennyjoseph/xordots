@@ -7,6 +7,7 @@ var P1 = "You",
 var names_data = [];
 
 function InitiateGame(N, X) {
+	
 	GameSize = N;
 	gmstate = new Array(SumNaturalN(GameSize)).fill(0)
 	CreatePattern(GameSize);
@@ -184,10 +185,8 @@ $('#defplayer').click(function () {
 
 $('#resetgame').click(function () {
 	$('#pattern').html("");
-	$('#pattern').hide("");
-	$('#gamethings').hide("");
+	$('#gamethings').hide();
 	InitiateGame(+$('#rownumbers').text(), +$('#startplayer').text());
-	$('#pattern').show();
 	$('#gamethings').show();
 });
 
