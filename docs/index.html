@@ -65,7 +65,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">View Source
+          <h5 class="modal-title" id="exampleModalLongTitle">Github
           </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -73,7 +73,10 @@
         </div>
         <div id="modal-text-dd" class="modal-body">
           <center><button onclick="window.location.href = 'https://github.com/pbennyjoseph/xordots'"
-              class="justify-content-center btn btn-primary">View Source in Github <i class="fab fa-github"></i>
+              class="justify-content-center btn btn-light btn-outline-dark"><i class="fab fa-github"></i> View Source  
+            </button>
+			<button onclick="window.location.href = 'https://github.com/pbennyjoseph/xordots/fork'"
+              class="justify-content-center btn btn-light btn-outline-dark"><i class="fas fa-code-branch"></i> Fork
             </button></center>
         </div>
         <div class="modal-footer">
@@ -166,11 +169,11 @@
               <input id="startplayer" type="hidden"></input>
               <div class="my-1 custom-control custom-radio custom-control-inline">
                 <input type="radio" id="defplayer" name="defplayer" class="custom-control-input" checked="true">
-                <label class="custom-control-label" for="defplayer">Single Player</label>
+                <label class="custom-control-label" style="cursor: pointer" for="defplayer">Single Player</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" id="doubleplayer" name="defplayer" class="custom-control-input disabled">
-                <label class="custom-control-label" for="doubleplayer">Two Player</label>
+                <label class="custom-control-label" style="cursor: pointer" for="doubleplayer">Two Player</label>
               </div>
 
               <div class="form-inline" id="playernames" style="display: none;">
