@@ -185,6 +185,7 @@ $('#defplayer').click(function () {
 
 $('#resetgame').click(function () {
 	$('#pattern').html("");
+	Selected = undefined;
 	$('#gamethings').hide();
 	InitiateGame(+$('#rownumbers').text(), +$('#startplayer').text());
 	$('#gamethings').show();
